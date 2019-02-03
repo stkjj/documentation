@@ -149,6 +149,8 @@ Then, export the database to the new server.
 .. code-block:: console 
 
     rsync -Aaxt owncloud-dbbackup.bak root@new_server_address:/var/www/owncloud 
+    
+.. note:: Open owncloud-dbbackup.bak a text editor of your choice and find all orrcurrences of entries showing to filepaths of your old installation, e.g in the tables oc_storages, oc_accounts and oc_jobs. Insert the pathnames of the new installation instead. Alternatively you can change the values after the import by using SQL-Statemets 
 
 With that completed, import the database on new server.
 
@@ -176,6 +178,8 @@ Transfer Data and Configure the New Server
 .. code-block:: console
 
    rsync -Aavxt config data root@new_server_address:/var/www/owncloud 
+
+.. note:: You might need to change the database credentials according to your new server and change the paths to your owncloud data directory, log directory and/or tmp directory within your config.php
 
 .. warning:: 
    If you want to move your data directory to another location on the target server, it is advised to do   
